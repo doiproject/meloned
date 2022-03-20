@@ -345,7 +345,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           .doc(user.uid)
                           .update(userCreateData);
 
-                      await Future.delayed(const Duration(milliseconds: 1000));
+                      await Future.delayed(const Duration(milliseconds: 300));
                       Navigator.pop(context);
                     },
                     text: 'ลงทะเบียน',

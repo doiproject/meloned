@@ -260,12 +260,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                         return;
                       }
 
+                      await Future.delayed(const Duration(milliseconds: 500));
                       await Navigator.push(
                         context,
                         PageTransition(
-                          type: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 200),
-                          reverseDuration: Duration(milliseconds: 200),
+                          type: PageTransitionType.bottomToTop,
+                          duration: Duration(milliseconds: 400),
+                          reverseDuration: Duration(milliseconds: 400),
                           child: DashboardWidget(),
                         ),
                       );

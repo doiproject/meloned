@@ -142,8 +142,11 @@ class _WelcomWidgetState extends State<WelcomWidget>
                         onPressed: () async {
                           await Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginWidget(),
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 500),
+                              reverseDuration: Duration(milliseconds: 500),
+                              child: LoginWidget(),
                             ),
                           );
                         },

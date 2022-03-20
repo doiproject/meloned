@@ -72,11 +72,11 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Container(
-              color: Colors.transparent,
+              color: Colors.white,
               child: Builder(
                 builder: (context) => Image.asset(
                   'assets/images/Group_465.png',
-                  fit: BoxFit.contain,
+                  fit: BoxFit.none,
                 ),
               ),
             )
