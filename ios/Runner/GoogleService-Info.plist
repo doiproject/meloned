@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1042295514551-9jo2kj07h9dp14shgf9fth1hgifbic7f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1042295514551-9jo2kj07h9dp14shgf9fth1hgifbic7f</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1042295514551-bgg9fku1ns75049hngvcg726fll91e53.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC1P9YTi9wPDhP1rurMuVZarH1XXPtFsCM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1042295514551</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.relaxlikes.melon</string>
+	<key>PROJECT_ID</key>
+	<string>melon-d1d4f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>melon-d1d4f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1042295514551:ios:ba5d2bbd666fce8fe97432</string>
+</dict>
+</plist>
