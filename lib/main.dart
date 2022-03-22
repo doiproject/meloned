@@ -9,7 +9,11 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:smart_melon_farm/welcom/welcom_widget.dart';
-import 'package:smart_melon_farm/login/login_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+import 'dashboard/dashboard_widget.dart';
+import 'dailycare/dailycare_widget.dart';
+import 'setting/setting_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -81,8 +85,123 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser.loggedIn
-              ? LoginWidget()
+              ? NavBarPage()
               : WelcomWidget(),
+    );
+  }
+}
+
+class NavBarPage extends StatefulWidget {
+  NavBarPage({Key key, this.initialPage}) : super(key: key);
+
+  final String initialPage;
+
+  @override
+  _NavBarPageState createState() => _NavBarPageState();
+}
+
+/// This is the private State class that goes with NavBarPage.
+class _NavBarPageState extends State<NavBarPage> {
+  String _currentPage = 'Login';
+
+  @override
+  void initState() {
+    super.initState();
+    _currentPage = widget.initialPage ?? _currentPage;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tabs = {
+      'Dashboard': DashboardWidget(),
+      'Dailycare': DailycareWidget(),
+      'Setting': SettingWidget(),
+    };
+    final currentIndex = tabs.keys.toList().indexOf(_currentPage);
+    return Scaffold(
+      body: tabs[_currentPage],
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
+        currentIndex: currentIndex,
+        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+        backgroundColor: Colors.white,
+        selectedItemColor: Color(0xFF3170DA),
+        unselectedItemColor: Color(0xFF535252),
+        selectedBackgroundColor: Colors.transparent,
+        borderRadius: 8,
+        itemBorderRadius: 8,
+        margin: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        width: double.infinity,
+        elevation: 500,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                  color:
+                      currentIndex == 0 ? Color(0xFF3170DA) : Color(0xFF535252),
+                  size: 24,
+                ),
+                Text(
+                  'Home',
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.getFont(
+                    'Kanit',
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.fact_check_sharp,
+                  color:
+                      currentIndex == 1 ? Color(0xFF3170DA) : Color(0xFF535252),
+                  size: 24,
+                ),
+                Text(
+                  'Daily Care',
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.getFont(
+                    'Kanit',
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  currentIndex == 2
+                      ? Icons.settings_rounded
+                      : Icons.settings_outlined,
+                  color:
+                      currentIndex == 2 ? Color(0xFF3170DA) : Color(0xFF535252),
+                  size: 24,
+                ),
+                Text(
+                  'Setting',
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.getFont(
+                    'Kanit',
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

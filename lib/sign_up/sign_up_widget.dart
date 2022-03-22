@@ -18,6 +18,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   TextEditingController confirmPasswordController;
   bool confirmPasswordVisibility;
   TextEditingController emailAddressController;
+  TextEditingController usernameController;
   TextEditingController passwordController;
   bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -28,6 +29,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
     emailAddressController = TextEditingController();
+    usernameController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
   }
@@ -131,6 +133,55 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   ),
                         ),
                       ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 12),
+                    child: TextFormField(
+                      controller: usernameController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Your username',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        hintText: 'Enter your username',
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFDBE2E7),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFDBE2E7),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF1D2429),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
                     ),
                   ),
                   Padding(
@@ -340,6 +391,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       final userCreateData = createUserRecordData(
                         email: emailAddressController.text,
                         password: passwordController.text,
+                        username: usernameController.text,
                       );
                       await UserRecord.collection
                           .doc(user.uid)

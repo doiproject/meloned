@@ -1,9 +1,10 @@
 import '../auth/auth_util.dart';
-import '../dashboard/dashboard_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import '../sign_up/sign_up_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,15 +17,40 @@ class LoginWidget extends StatefulWidget {
   _LoginWidgetState createState() => _LoginWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _LoginWidgetState extends State<LoginWidget>
+    with TickerProviderStateMixin {
   TextEditingController passwordController;
   bool passwordVisibility;
   TextEditingController usernameController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.linear,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+
     passwordController = TextEditingController();
     passwordVisibility = false;
     usernameController = TextEditingController();
@@ -267,7 +293,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           type: PageTransitionType.bottomToTop,
                           duration: Duration(milliseconds: 400),
                           reverseDuration: Duration(milliseconds: 400),
-                          child: DashboardWidget(),
+                          child: NavBarPage(initialPage: 'Dashboard'),
                         ),
                       );
                     },
@@ -402,7 +428,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ),
           ],
-        ),
+        ).animated([animationsMap['columnOnPageLoadAnimation']]),
       ),
     );
   }
